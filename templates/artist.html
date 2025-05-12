@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ .Title }}</title>
+    <link rel="stylesheet" href="/static/css/styleArtist.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="/static/js/geolocation.js" defer></script>
+    <script src="/static/js/search.js" defer></script>
+    <script src="/static/js/locfix.js" defer></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon.png">
+  </head>
+  <body>
+    <a href="/home" class="headerTitle">Groupie Tracker</a>
+    <!-- Main Container (Black Section) -->
+    <div class="profile-container">
+      <!-- Left Column: Basic Artist Info -->
+      <div class="profile-image-section">
+        <img
+          src="{{ .Artist.Artist.Image }}"
+          alt="{{ .Artist.Artist.Name }}"
+          class="profile-image"
+        />
+        <h2 class="artist-name">{{ .Artist.Artist.Name }}</h2>
+        {{ $locationCount := len .Artist.Relations.DatesLocations }}
+        <div class="details-box">
+          <h3>Details</h3>
+          <h5><strong>Members:</strong></h5>
+          <p>
+            {{ if .Artist.Artist.Members }} {{ range $index, $member :=
+            .Artist.Artist.Members }} {{ if $index }}, {{ end }}{{ $member }} {{
+            end }} {{ else }} No members listed. {{ end }}
+          </p>
+
+          <h6><strong>First Album:</strong></h6>
+          <p>{{ .Artist.Artist.FirstAlbum }}</p>
+
+          <!-- Replacing invalid <h7> with <h6> -->
+          <h6><strong>Creation Date:</strong></h6>
+          <p>{{ .Artist.Artist.CreationDate }}</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Concert Locations & Map -->
+      <div class="profile-info-section">
+        {{ if .Artist.Relations.DatesLocations }}
+        <div class="concert-grid">
+          {{ range $location, $dates := .Artist.Relations.DatesLocations }} {{
+          $dateCount := len $dates }}
+          <!-- Updated card markup for each concert -->
+          <div class="card location-card">
+            <div class="content">
+              <!-- Front Side: Location -->
+              <div class="front">
+                <div class="front-content">
+                  <div class="title">
+                    <p class="location-name" data-location="{{ $location }}">
+                      {{ $location }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- Back Side: Dates -->
+              <div class="back">
+                <div
+                  class="back-content"
+                  {{if
+                  eq
+                  $dateCount
+                  3}}single-date{{end}}
+                >
+                  <div class="concert-dates">
+                    {{ range $dates }}
+                    <p class="date">{{ . }}</p>
+                    {{ else }}
+                    <p class="date">No dates available.</p>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+        {{ else }}
+        <p>No upcoming concerts.</p>
+        {{ end }}
+
+        <!-- Map Section -->
+        <div id="map"></div>
+        <div class="zoom-controls">
+          <button id="zoom-out-button" class="map-button" style="display: none">
+            Zoom Out
+          </button>
+          <button id="zoom-in-button" class="map-button" style="display: none">
+            Zoom In
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to Home Button -->
+    <div class="button-container">
+      <a href="/home" class="button">Back to Home</a>
+    </div>
+
+   <!-- About Us Section -->
+<div class="about-section">
+  <!-- Row 1: Centered About Us -->
+  <div class="about-title">
+    <h2>About Us</h2>
+    <p>
+      We create memories, not just music. Our passion for sound, rhythm, and live
+      performances brings people together through unforgettable experiences.
+    </p>
+  </div>
+
+  <!-- Row 2: Contact on Left, Logos on Right -->
+  <div class="about-content">
+    <!-- Left: Contact Info -->
+    <div class="contact-section">
+      <h3>Contact Us</h3>
+      <p>Email: info@example.com</p>
+      <p>Phone: (123) 456-7890</p>
+      <p>Address: 123 Music Ave, Melody City</p>
+    </div>
+
+    <!-- Right: Logos -->
+    <!-- Logos Section -->
+<div class="logos-section">
+  <!-- Logo 1: Links to your desired URL -->
+  <a 
+    href="https://accounts.google.com/v3/signin/identifier?ifkv=ASSHykq9Re4uZO5W4Mpz07Idbhc8FaWKes7iQSRUoY1h7zQNp2ppIVZ3Z98R_onGSXdhx7_qerS94A&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1844471359%3A1741186830332618&ddm=1" 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    <img src="/static/img/1.png" alt="Logo 1" class="logo" />
+  </a>
+
+  <!-- Logo 2: Links to another URL -->
+  <a 
+    href="https://www.instagram.com/" 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    <img src="/static/img/2.png" alt="Logo 2" class="logo" />
+  </a>
+
+  <!-- Logo 3: Links to a third URL -->
+  <a 
+    href="https://github.com/" 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    <img src="/static/img/3.png" alt="Logo 3" class="logo" />
+  </a>
+</div>
+  </div>
+</div>
+</body>
+</html>

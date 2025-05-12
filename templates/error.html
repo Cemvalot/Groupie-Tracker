@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 Error</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+      body {
+        background-image: url("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExY21iNWZsdGg5NnU3cTM2ZjJpc2E4aDlhOGg2Y2ZldTM0ZGhta2N3aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vKz8r5aTUFFJu/giphy.gif");
+        background-size: cover; /* Ensures the image covers the whole page */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents repetition */
+        background-color: black;
+        margin: 0;
+        height: 100vh; /* Full height of the viewport */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .error-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .error,
+      .error-number {
+        color: #73f64b;
+        font-size: 40px;
+        font-weight: bold;
+        font-family: "Orbitron", sans-serif;
+      }
+
+      .error-number {
+        font-size: 50px;
+      }
+
+      .button {
+        background-color: #000;
+        border: 1px solid #73f64b;
+        color: #fff;
+        padding: 10px 20px;
+        margin: 20px;
+        font-size: 1rem;
+        font-family: "Orbitron", sans-serif;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .button:hover {
+        background-color: #73f64b;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="error-container">
+      <a href="/home" class="button">Back to Home</a>
+      <div class="error">Error! Rave Not Found</div>
+      <div class="error-number">404</div>
+    </div>
+  </body>
+</html>

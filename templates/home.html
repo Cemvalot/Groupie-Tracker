@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ .Title }}</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="/static/js/search.js" defer></script>
+    <script src="/static/js/filters.js" defer></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="/static/js/geolocation.js" defer></script>
+  </head>
+  <body>
+    <section class="section">
+      <!-- Header: Title and Filter Button -->
+      <div class="header">
+        <button type="button" id="filter-button" class="filter-button">
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+        <a id="title" href="/home" class="title">Groupie Tracker</a>
+      </div>
+
+      <!-- Search Form -->
+      <form action="/home" method="get" class="form">
+        <div id="search-container" class="search-container">
+          <!-- Search Input -->
+          <input
+            type="text"
+            name="search"
+            value="{{ .SearchQuery }}"
+            placeholder="Enter your search..."
+            class="input"
+            autocomplete="off"
+            id="search-input"
+            oninput="fetchSuggestions()"
+          />
+          <!-- Suggestions Box -->
+          <ul id="suggestions" class="suggestions-list"></ul>
+          <!-- Search Type Dropdown -->
+          <select name="searchType" class="input">
+            <option
+              value="name"
+              {{ if eq .SearchType "name" }}selected{{ end }}
+            >
+              Search by Name
+            </option>
+            <option
+              value="location"
+              {{ if eq .SearchType "location" }}selected{{ end }}
+            >
+              Search by Location
+            </option>
+            <option
+              value="date"
+              {{ if eq .SearchType "date" }}selected{{ end }}
+            >
+              Search by Date
+            </option>
+          </select>
+          <!-- Search Button -->
+          <button type="submit" class="search-button">Search</button>
+        </div>
+      </form>
+
+      <div id="filter-modal" class="modal">{{ template "filter-modal" . }}</div>
+
+      <!-- Artists Grid -->
+      {{ if .Artists }}
+        <div id="grid" class="grid">
+          {{ range .Artists }}
+            <a href="/artist/{{ .Artist.ID }}" class="link">
+              <div class="card">
+                <!-- Parallax Background (optional) -->
+                <div
+                  class="card-bg"
+                  style="background-image: url('/static/img/your-parallax-bg.jpg');"
+                ></div>
+
+                <!-- Artist's Main Content -->
+                <img
+                  src="{{ .Artist.Image }}"
+                  alt="{{ .Artist.Name }}"
+                  class="image"
+                />
+                <h3 class="card-title">{{ .Artist.Name }}</h3>
+              </div>
+            </a>
+          {{ end }}
+        </div>
+      {{ else }}
+        <p style="text-align: center; font-size: 30px;">
+          No results found for "{{ .SearchQuery }}".
+        </p>
+      {{ end }}
+    </section>
+
+    <!-- About Us Section -->
+    <div class="about-section">
+      <!-- Row 1: Centered About Us -->
+      <div class="about-title">
+        <h2>About Us</h2>
+        <p>
+          We create memories, not just music. Our passion for sound, rhythm, and
+          live performances brings people together through unforgettable
+          experiences.
+        </p>
+      </div>
+
+      <!-- Row 2: Contact (left) and Logos (right) -->
+      <div class="about-content">
+        <!-- Contact Info -->
+        <div class="contact-section">
+          <h4>Contact Us</h4>
+          <p>Email: info@example.com</p>
+          <p>Phone: (123) 456-7890</p>
+          <p>Address: 123 Music Ave, Melody City</p>
+        </div>
+
+        <!-- Logos (clickable) -->
+        <div class="logos-section">
+          <!-- Example clickable logos -->
+          <a
+          href="https://accounts.google.com/v3/signin/identifier?ifkv=ASSHykq9Re4uZO5W4Mpz07Idbhc8FaWKes7iQSRUoY1h7zQNp2ppIVZ3Z98R_onGSXdhx7_qerS94A&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1844471359%3A1741186830332618&ddm=1" 
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/static/img/1.png" alt="Logo 1" class="logo" />
+          </a>
+          <a
+          href="https://www.instagram.com/" 
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/static/img/2.png" alt="Logo 2" class="logo" />
+          </a>
+          <a
+          href="https://github.com/" 
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/static/img/3.png" alt="Logo 3" class="logo" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

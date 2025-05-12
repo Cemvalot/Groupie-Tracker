@@ -1,0 +1,132 @@
+{{ define "filter-modal" }}
+<head>
+  <link rel="stylesheet" href="/static/css/styleFilters.css" />
+  <script src="/static/js/filters.js" defer></script>
+</head>
+<div class="close-container">
+  <div id="closeButton" class="close-button">
+    <i class="fa-solid fa-sliders"></i>
+  </div>
+  <h1>Filters</h1>
+</div>
+
+<div>
+  <!-- Creation Date Range Slider -->
+  <div class="range-slider">
+    <div class="neon-title">Creation Date</div>
+    <div class="slider-labels">
+      <span id="creationMinValueLabel">1950</span>
+      <span id="creationMaxValueLabel">2020</span>
+    </div>
+    <div class="slider-container">
+      <input
+        type="range"
+        min="1950"
+        max="2020"
+        value="1950"
+        class="slider"
+        id="creationMinRange"
+      />
+      <input
+        type="range"
+        min="1950"
+        max="2020"
+        value="2020"
+        class="slider"
+        id="creationMaxRange"
+      />
+      <div class="slider-track" id="creationTrack"></div>
+    </div>
+    <div class="current-values">
+      Selected Range: <span id="creationCurrentRange">1950 - 2020</span>
+    </div>
+  </div>
+
+  <!-- First Album Date Range Slider -->
+  <div class="range-slider">
+    <div class="neon-title">First Album Date</div>
+    <div class="slider-labels">
+      <span id="albumMinValueLabel">1950</span>
+      <span id="albumMaxValueLabel">2020</span>
+    </div>
+    <div class="slider-container">
+      <input
+        type="range"
+        min="1950"
+        max="2020"
+        value="1950"
+        class="slider"
+        id="albumMinRange"
+      />
+      <input
+        type="range"
+        min="1950"
+        max="2020"
+        value="2020"
+        class="slider"
+        id="albumMaxRange"
+      />
+      <div class="slider-track" id="albumTrack"></div>
+    </div>
+    <div class="current-values">
+      Selected Range: <span id="albumCurrentRange">1950 - 2020</span>
+    </div>
+  </div>
+
+  <!-- Band Member Check Box Filter -->
+  <div class="checkbox-filter">
+    <div class="neon-title" style="margin-bottom: 10px">
+      Number of Band Members
+    </div>
+    <div class="checkbox-container">
+      <label>
+        <input type="checkbox" name="bandMembers" value="1" />
+        1
+      </label>
+      <label>
+        <input type="checkbox" name="bandMembers" value="2" />
+        2
+      </label>
+      <label>
+        <input type="checkbox" name="bandMembers" value="3" />
+        3
+      </label>
+      <label>
+        <input type="checkbox" name="bandMembers" value="4" />
+        4
+      </label>
+      <label>
+        <input type="checkbox" name="bandMembers" value="5" />
+        5
+      </label>
+      <label>
+        <input type="checkbox" name="bandMembers" value="6" />
+        6
+      </label>
+      <label>
+        <input type="checkbox" name="bandMembers" value="7" />
+        7
+      </label>
+      <label>
+        <input type="checkbox" name="bandMembers" value="8" />
+        8
+      </label>
+    </div>
+  </div>
+
+  <div class="range-slider">
+    <div class="neon-title">Locations</div>
+    <textarea
+      id="inputField"
+      rows="1"
+      placeholder="Type Location..."
+    ></textarea>
+    <button class="filter-buttons" id="addButton">+</button>
+    <ul id="itemList" class="list"></ul>
+  </div>
+  <div class="button-container">
+    <button id="resetButton" class="filter-buttons">Reset</button>
+    <button id="submitButton" class="filter-buttons">Submit</button>
+  </div>
+</div>
+{{ end }}

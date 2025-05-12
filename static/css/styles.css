@@ -1,0 +1,311 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+
+/* ----------------------------
+   Base & Body
+----------------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #000; /* Dark background */
+  color: #fff; /* White text by default */
+}
+
+/* Section Container */
+.section {
+  padding: 20px;
+}
+
+/* ----------------------------
+     Header
+  ----------------------------- */
+.header {
+  font-family: "Orbitron", sans-serif;
+  position: relative;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+/* ----------------------------
+     Filters
+  ----------------------------- */
+
+.filter-button {
+  position: absolute;
+  top: 50%;
+  left: 20px; /* Positions it in the top-left */
+  transform: translateY(-50%); /* Keeps it vertically centered */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #73f64b; /* Matches your theme */
+}
+
+.filter-button i {
+  transition: color 0.3s ease;
+}
+
+.filter-button:hover i {
+  color: #fff; /* Lighten color on hover */
+}
+
+/* Centered Title (adjusted to your color preference) */
+.title {
+  color: #73f64b;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+/* ----------------------------
+     Search Form
+  ----------------------------- */
+.form .search-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto 20px auto;
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  padding: 8px;
+  border: 1px solid #73f64b;
+  border-radius: 4px;
+  background-color: #000;
+  color: #fff;
+  outline: none;
+}
+
+.button {
+  padding: 8px 12px;
+  background-color: #73f64b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-button {
+  background-color: #000;
+  border: 1px solid #73f64b;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+}
+
+.search-button:hover {
+  background-color: #73f64b;
+  color: #000;
+}
+
+/* Suggestions list styling (optional) */
+.suggestions-list {
+  position: absolute;
+  list-style: none;
+  padding: 5px;
+  margin: 10px auto;
+  max-width: 400px;
+  z-index: 10 !important;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.8); /* Black with 50% opacity */
+  cursor: pointer;
+  width: 100%;
+  top: 100%;
+}
+
+.suggestion-item {
+  padding-bottom: 10px;
+}
+
+.suggestion-item:hover {
+  color: #73f64b;
+}
+
+/* ----------------------------
+     Grid & Cards
+  ----------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 100vw;
+  transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* Adjust columns for small screens */
+    width: 90vw; /* Ensure it fully fits */
+    max-width: 100vw; /* Prevent horizontal scroll */
+  }
+}
+
+
+.grid.shifted {
+  margin-left: 330px !important;
+  grid-template-columns: repeat(3, 1fr);
+  width: calc(100% - 310px); /* Reduce width to prevent overflow */
+}
+
+/* 
+    Card Container:
+    - Position relative so the .card-bg can be absolutely positioned
+    - Add transitions for the hover effect
+  */
+.card {
+  position: relative;
+  overflow: hidden; /* Hide overflow so background doesn’t spill out */
+  background-color: transparent; /* Transparent background */
+  color: #fff; 
+  padding: 10px;
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #73f64b; 
+  border-radius: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* On hover, create a neon-like glow (“backlight”) and slightly scale the card */
+.card:hover {
+  box-shadow: 0 0 15px 5px rgba(115, 246, 75, 0.7); /* greenish glow */
+  transform: scale(1.03);
+}
+
+.card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 150%;
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
+}
+
+/* The main image inside the card (artist photo) */
+.card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px auto;
+  position: relative; /* on top of the .card-bg */
+  z-index: 1;
+}
+
+.card-title {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+.link {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  margin-top: 10px;
+  color: #73f64b; /* Black text link on green card */
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+}
+
+/* About Us Section Container */
+.about-section {
+  background-color: #000; /* Dark background for contrast */
+  color: #fff;
+  padding: 40px 20px;
+  width: 100%;
+}
+.about-section h2 {
+  color: #73f64b;
+  margin-bottom: 10px;
+  text-align: center;
+}
+/* Row 1: Centered Title & Paragraph */
+.about-title {
+  text-align: center;
+  max-width: 800px; /* Limits width for readability */
+  margin: 0 auto 40px; /* Center horizontally & add bottom spacing */
+}
+h4, h5, h6 {
+  font-family: "Orbitron", sans-serif;
+  color: #73f64b;
+  margin-bottom: 10px;
+}
+.about-title h2 {
+  font-family: "Orbitron", sans-serif;
+  margin-bottom: 10px;
+  font-size: 2em;
+}
+
+.about-title p {
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+/* Row 2: Contact on Left, Logos on Right */
+.about-content {
+  display: flex;
+  justify-content: space-between; /* Push contact left, logos right */
+  align-items: flex-start;        /* Top-align them; change to center if desired */
+  max-width: 1200px;             /* Control overall width */
+  margin: 0 auto;                /* Center the container horizontally */
+  gap: 40px;                     /* Space between columns */
+}
+
+/* Contact Section (Left) */
+.contact-section {
+  text-align: left;
+  max-width: 300px; /* Adjust as needed */
+}
+
+/* Logos Section (Right) */
+.logos-section {
+  display: flex;
+  justify-content: flex-end; /* Right-align logos within this container */
+  gap: 20px;                 /* Space between each logo */
+}
+
+/* Logo Sizing */
+.logo {
+  max-width: 80px;
+  height: auto;
+}
+
+@media (max-width: 1130px) {
+  .search-container.shifted {
+    margin-left: 330px !important;
+    width: calc(100% - 310px);
+  }
+  .title.shifted {
+    margin-left: 330px !important;
+    width: calc(100% - 310px);
+  }
+}

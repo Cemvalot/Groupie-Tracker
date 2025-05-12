@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Groupie Tracker</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">Groupie Tracker</div>
+      <div class="caption">where music begins</div>
+      <div onclick="window.location.href='/home'" class="enter">ENTER</div>
+    </div>
+  </body>
+</html>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+
+  body {
+    background-image: url("https://j.gifs.com/vbgP5a.gif");
+    background-size: cover; /* Ensures the image covers the whole page */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+    height: 100vh; /* Ensures full viewport height */
+    margin: 0;
+  }
+
+  .container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height of the viewport */
+  }
+
+  .title {
+    color: #73f64b;
+    font-family: "Orbitron", sans-serif;
+    font-size: 6.5em;
+    font-weight: 900;
+    letter-spacing: -5px;
+    text-shadow: 2px 2px 4px black;
+  }
+
+  .caption {
+    color: #73f64b;
+    font-family: "Orbitron", sans-serif;
+    font-size: 2.5em;
+    font-weight: 400;
+    letter-spacing: -2px;
+    text-shadow: 2px 2px 4px black;
+  }
+
+  .enter {
+    margin-top: 50px;
+    padding: 10px 20px;
+    font-family: "Orbitron", sans-serif;
+    font-size: 16px;
+    color: #73f64b; /* Text color */
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #73f64b; /* Border line */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0px 10px 20px black;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .enter:hover {
+    background: #73f64b; /* Dark background on hover */
+    color: black;
+  }
+</style>
