@@ -1,4 +1,4 @@
-# Groupie Tracker Search Bar
+# Groupie Tracker
 
 This project is a **web application** built in **Go (Golang)** to provide users with a search feature for tracking information about musical artists. The application is structured using MVC principles and integrates various assets and APIs to offer dynamic and interactive features.
 
